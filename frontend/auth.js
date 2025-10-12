@@ -54,7 +54,7 @@ async function login(event) {
       localStorage.removeItem("redirectAfterLogin");
       window.location.href = redirectUrl;
     } else {
-      window.location.href = "homepage.html";
+      window.location.href = "index.html"; // ✅ updated here
     }
   } catch (err) {
     console.error(err);
@@ -130,7 +130,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.pathname.includes("login") ||
       window.location.pathname.includes("signup")
     ) {
-      window.location.href = "homepage.html";
+      window.location.href = "index.html"; // ✅ updated here
     }
   }
 });
