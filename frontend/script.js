@@ -1,8 +1,9 @@
 let currentPage = 1;
-const limit = 6;              
-let currentQuery = "";        
+const limit = 6;
+let currentQuery = "";
 
 const API_BASE = "https://real-estate-backend-1-s7p3.onrender.com/api/properties";
+const IMAGE_BASE = "https://real-estate-backend-1-s7p3.onrender.com/uploads"; // for property images
 
 // Helper: build URL to backend /api/properties
 function buildPropertiesUrl(query, page) {
@@ -30,7 +31,9 @@ async function fetchProperties(query = "", page = 1) {
 
     const data = await res.json();
     const properties = data.results || [];
-    const totalPages = data.totalPages ?? Math.ceil((data.totalResults || properties.length) / limit);
+    const totalPages =
+      data.totalPages ??
+      Math.ceil((data.totalResults || properties.length) / limit);
     const pageFromBackend = data.currentPage ?? currentPage;
 
     renderProperties(properties);
@@ -56,28 +59,42 @@ function renderProperties(properties) {
   const userRole = localStorage.getItem("userRole");
   const userId = localStorage.getItem("userId");
 
-  properties.forEach(property => {
+  properties.forEach((property) => {
     const card = document.createElement("div");
     card.className = "property-card";
 
-    const imageUrl = property.thumbnail ? `https://real-estate-backend-1-s7p3.onrender.com/uploads/${property.thumbnail}` : "default.jpg";
+    // Build full image URL (if thumbnail exists)
+    let imageUrl = "default.jpg";
+    if (property.thumbnail) {
+      imageUrl = `${IMAGE_BASE}/${property.thumbnail}`;
+    }
+
     const sellerId = property.seller_id ?? property.user_id ?? property.userId;
 
     let html = `
-      <img src="${imageUrl}" alt="${escapeHtml(property.title || 'Property')}">
+      <img src="${imageUrl}" alt="${escapeHtml(
+      property.title || "Property"
+    )}" onerror="this.src='default.jpg'">
       <div class="details">
         <h3>${escapeHtml(property.title || "")}</h3>
         <p class="price">₦${property.price ?? ""}</p>
         <p><strong>Location:</strong> ${escapeHtml(property.location ?? "")}</p>
         <p><strong>Status:</strong> ${escapeHtml(property.status ?? "")}</p>
-        <a href="property.html?id=${property.property_id}" class="btn">View Details</a>
+        <a href="property.html?id=${
+          property.property_id
+        }" class="btn">View Details</a>
     `;
 
     if (token) {
       if (userRole && userRole.toLowerCase() === "admin") {
         html += ` <button class="btn admin-delete" data-id="${property.property_id}">Delete</button>`;
       }
-      if (userRole && userRole.toLowerCase() === "seller" && userId && Number(userId) === Number(sellerId)) {
+      if (
+        userRole &&
+        userRole.toLowerCase() === "seller" &&
+        userId &&
+        Number(userId) === Number(sellerId)
+      ) {
         html += ` <a href="edit-property.html?id=${property.property_id}" class="btn">Edit</a>`;
         html += ` <button class="btn owner-delete" data-id="${property.property_id}">Delete</button>`;
       }
@@ -88,7 +105,8 @@ function renderProperties(properties) {
     propertyList.appendChild(card);
   });
 
-  document.querySelectorAll(".admin-delete, .owner-delete").forEach(btn => {
+  // Delete buttons
+  document.querySelectorAll(".admin-delete, .owner-delete").forEach((btn) => {
     btn.addEventListener("click", async () => {
       const id = btn.dataset.id;
       if (!confirm("Are you sure you want to delete this property?")) return;
@@ -98,11 +116,11 @@ function renderProperties(properties) {
         const res = await fetch(`${API_BASE}/${id}`, {
           method: "DELETE",
           headers: {
-            "Authorization": token ? `Bearer ${token}` : ""
-          }
+            Authorization: token ? `Bearer ${token}` : "",
+          },
         });
         if (!res.ok) {
-          const body = await res.json().catch(()=>({}));
+          const body = await res.json().catch(() => ({}));
           throw new Error(body.message || `Delete failed: ${res.status}`);
         }
         fetchProperties(currentQuery, currentPage);
@@ -124,7 +142,9 @@ function renderPagination(totalPages, activePage = 1) {
   if (activePage > 1) {
     const prev = document.createElement("button");
     prev.textContent = "Prev";
-    prev.addEventListener("click", () => fetchProperties(currentQuery, activePage - 1));
+    prev.addEventListener("click", () =>
+      fetchProperties(currentQuery, activePage - 1)
+    );
     pagination.appendChild(prev);
   }
 
@@ -144,7 +164,9 @@ function renderPagination(totalPages, activePage = 1) {
   if (activePage < totalPages) {
     const next = document.createElement("button");
     next.textContent = "Next";
-    next.addEventListener("click", () => fetchProperties(currentQuery, activePage + 1));
+    next.addEventListener("click", () =>
+      fetchProperties(currentQuery, activePage + 1)
+    );
     pagination.appendChild(next);
   }
 }
