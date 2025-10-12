@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Add Property - Real Estate Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="property.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo8.png" alt="Logo" class="logo-img">
+      <span class="logo-text">Real Estate<span class="highlight">Hub</span></span>
+    </div>
+    <nav>
+      <ul id="nav-links"></ul>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="form-card">
+      <h2>Add New Property</h2>
+      <p class="form-subtitle">Fill out the details below to list your property</p>
+
+      <form id="addPropertyForm" enctype="multipart/form-data" class="styled-form">
+        <div class="form-row">
+          <label for="title">Title</label>
+          <input id="title" name="title" placeholder="e.g. 3 Bedroom Flat" required />
+        </div>
+
+        <div class="form-row">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" rows="4" placeholder="Describe your property..." required></textarea>
+        </div>
+
+        <div class="form-row">
+          <label for="price">Price (₦)</label>
+          <input id="price" name="price" type="number" min="0" placeholder="Enter price" required />
+        </div>
+
+        <div class="form-row">
+          <label for="location">Location</label>
+          <input id="location" name="location" placeholder="e.g. Kano" required />
+        </div>
+
+        <div class="form-row">
+          <label for="thumbnail">Image</label>
+          <input id="thumbnail" name="thumbnail" type="file" accept="image/*" />
+        </div>
+
+        <p id="addError" class="error-msg"></p>
+        <button type="submit" class="btn-primary">Add Property</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Real Estate Hub | All Rights Reserved</p>
+  </footer>
+
+  <script src="property.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>

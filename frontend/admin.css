@@ -1,0 +1,280 @@
+/* Global Base Styles*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+  color: #1e293b;
+  line-height: 1.5;
+}
+
+/* Layout*/
+.admin-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #0096c7, #0077b6);
+  color: #f4f6f9;
+  display: flex;
+  flex-direction: column;
+  padding: 25px 20px;
+  box-shadow: 4px 0 15px rgba(0,0,0,0.15);
+  transition: width 0.3s ease;
+}
+
+.sidebar-header {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.sidebar-header .logo-img {
+  width: 60px;
+  margin-bottom: 10px;
+  border-radius: 12px;
+}
+
+.sidebar-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.sidebar-menu {
+  list-style: none;
+  flex: 1;
+}
+
+.sidebar-menu li {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 15px;
+}
+
+.sidebar-menu li i {
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.sidebar-menu li.active,
+.sidebar-menu li:hover {
+  background: #334155;
+  transform: translateX(5px);
+}
+
+.logout {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: auto;
+  transition: 0.3s ease;
+  box-shadow: 0 4px 10px rgba(239,68,68,0.3);
+}
+
+.logout:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.topbar {
+  background: #fff;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.topbar h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.section {
+  display: none;
+  padding: 25px 30px;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dashboard Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 22px;
+  margin-bottom: 35px;
+}
+
+.card {
+  color: #fff;
+  padding: 28px;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 14px;
+  opacity: 0.9;
+}
+
+.card p {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+/* Gradient card styles */
+.gradient-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+.gradient-green { background: linear-gradient(135deg, #10b981, #059669); }
+.gradient-purple { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+.gradient-orange { background: linear-gradient(135deg, #f59e0b, #d97706); }
+
+/* Tables */
+.table-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  overflow-x: auto;
+  margin-bottom: 30px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  font-size: 14px;
+}
+
+.data-table th, .data-table td {
+  padding: 14px 16px;
+  text-align: left;
+}
+
+.data-table th {
+  background: #f3f4f6;
+  font-weight: 700;
+  color: #374151;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.data-table tr {
+  background: #fff;
+  border-radius: 8px;
+  transition: 0.3s ease;
+}
+
+.data-table tr:hover {
+  background: #f9fafb;
+  transform: scale(1.01);
+}
+
+.data-table td {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Status Badges for Action Types*/
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge-delete {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.badge-add, .badge-create {
+  background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.badge-update, .badge-edit {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+}
+
+.badge-login, .badge-logout {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+/* Action Buttons (Delete / Edit) */
+.action-btn {
+  border: none;
+  padding: 10px 14px; 
+  margin: 0 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.action-btn i {
+  pointer-events: none;
+  font-size: 16px;
+}
+
+/* Delete button */
+.delete-btn {
+  background: #ef4444;
+}
+.delete-btn:hover {
+  background: #dc2626;
+  transform: scale(1.08);
+}
+
+/* Edit button */
+.update-btn,
+.edit-btn {
+  background: #10b981; 
+}
+.update-btn:hover,
+.edit-btn:hover {
+  background: #059669;
+  transform: scale(1.08);
+}

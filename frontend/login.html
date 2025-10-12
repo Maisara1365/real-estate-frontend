@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Real Estate Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <!-- Header -->
+	<header>
+	  <div class="logo">
+		<img src="logo8.png" alt="Logo" class="logo-img">
+		<span class="logo-text">Real Estate<span class="highlight">Hub</span></span>
+	  </div>
+	  <nav>
+		<ul id="nav-links">
+		
+		</ul>
+	  </nav>
+	</header>
+
+  <!-- Auth Section -->
+  <section class="auth-section">
+    <!-- Left Image Slideshow -->
+    <div class="auth-image">
+      <div class="auth-slideshow">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1600&q=80');" data-title="Welcome Back 👋" data-subtitle="Login and continue your journey"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1600&q=80');" data-title="Trusted by Thousands 🏠" data-subtitle="Your home, your future, your way"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80');" data-title="Secure & Simple 🔐" data-subtitle="Fast, reliable and user-friendly"></div>
+      </div>
+      <div class="auth-overlay">
+        <h2 id="overlayTitle">Welcome Back 👋</h2>
+        <p id="overlaySubtitle">Login and continue your journey</p>
+      </div>
+    </div>
+
+    <!-- Right Form -->
+    <div class="auth-card">
+      <h2>Welcome Back 👋</h2>
+      <p class="subtitle">Login to continue your real estate journey</p>
+      
+      <form id="loginForm">
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Email Address" required>
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <div class="password-wrapper">
+            <input type="password" id="password" placeholder="password" required>
+            <span class="toggle-password" onclick="togglePassword('password')">👁️</span>
+          </div>
+        </div>
+
+        <p id="error" class="error-msg"></p>
+        <button type="submit" class="btn-auth">Login</button>
+      </form>
+
+      <p class="switch-link">Don’t have an account? <a href="signup.html">Sign up here</a></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Real Estate Hub | All Rights Reserved</p>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="nav.js"></script>
+</body>
+</html>
