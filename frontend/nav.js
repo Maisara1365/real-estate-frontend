@@ -8,26 +8,26 @@ function updateNav() {
   if (!user) {
     // Guest
     nav.innerHTML = `
-      <li><a href="homepage.html">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="login.html">Login</a></li>
       <li><a href="signup.html">Register</a></li>
     `;
   } else if (user.user_type === "buyer") {
     // Buyer
     nav.innerHTML = `
-      <li><a href="homepage.html">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="message.html">Messages</a></li>
       <li><a href="#" onclick="logout()">Logout</a></li>
     `;
   } else if (user.user_type === "seller") {
     // Seller
     nav.innerHTML = `
-      <li><a href="homepage.html">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="message.html">Messages</a></li>
       <li class="dropdown">
-        <a href="#" class="dropdown-toggle"> Properties <span class="arrow">▾</span></a>
+        <a href="#" class="dropdown-toggle">Properties <span class="arrow">▾</span></a>
         <ul class="dropdown-menu">
-          <li><a href="myProperties.html"> My Properties</a></li>
+          <li><a href="myProperties.html">My Properties</a></li>
           <li><a href="addProperty.html">Add Property</a></li>
         </ul>
       </li>
@@ -36,7 +36,7 @@ function updateNav() {
   } else if (user.user_type === "admin") {
     // Admin
     nav.innerHTML = `
-      <li><a href="homepage.html">Home</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="message.html">Messages</a></li>
       <li><a href="admin.html">Admin Dashboard</a></li>
       <li><a href="#" onclick="logout()">Logout</a></li>
@@ -44,7 +44,7 @@ function updateNav() {
   }
 
   highlightActiveLink();
-  setupDropdownToggle(); 
+  setupDropdownToggle();
 }
 
 function logout() {
@@ -56,10 +56,16 @@ function logout() {
 
 function highlightActiveLink() {
   const links = document.querySelectorAll("nav ul li a");
-  const current = window.location.pathname.split("/").pop();
+  let current = window.location.pathname.split("/").pop();
+
+  // Handle homepage case on Render ("/" should match "index.html")
+  if (current === "" || current === "/") {
+    current = "index.html";
+  }
 
   links.forEach(link => {
-    if (link.getAttribute("href") === current) {
+    const href = link.getAttribute("href");
+    if (href === current) {
       link.classList.add("active");
     } else {
       link.classList.remove("active");
@@ -78,7 +84,7 @@ function setupDropdownToggle() {
   toggle.addEventListener("click", function (e) {
     e.preventDefault();
     menu.classList.toggle("show");
-    arrow.classList.toggle("rotate"); 
+    arrow.classList.toggle("rotate");
   });
 
   document.addEventListener("click", function (e) {
