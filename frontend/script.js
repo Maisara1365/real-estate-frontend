@@ -5,7 +5,7 @@ let currentQuery = "";
 const API_BASE = "https://real-estate-backend-1-s7p3.onrender.com/api/properties";
 const IMAGE_BASE = "https://real-estate-backend-1-s7p3.onrender.com/uploads"; // for property images
 
-// Helper: build URL to backend /api/properties
+// --- Helper: build URL to backend /api/properties ---
 function buildPropertiesUrl(query, page) {
   if (query && query.startsWith("?")) {
     return `${API_BASE}${query}&page=${page}&limit=${limit}`;
@@ -16,7 +16,7 @@ function buildPropertiesUrl(query, page) {
   }
 }
 
-// Fetch properties (with pagination + current filter query)
+// --- Fetch properties (with pagination + current filter query) ---
 async function fetchProperties(query = "", page = 1) {
   currentPage = page;
   currentQuery = query || "";
@@ -45,7 +45,7 @@ async function fetchProperties(query = "", page = 1) {
   }
 }
 
-// Render property cards
+// --- Render property cards ---
 function renderProperties(properties) {
   const propertyList = document.getElementById("propertyList");
   propertyList.innerHTML = "";
@@ -63,7 +63,7 @@ function renderProperties(properties) {
     const card = document.createElement("div");
     card.className = "property-card";
 
-    // Build full image URL (if thumbnail exists)
+    // Build full image URL
     let imageUrl = "default.jpg";
     if (property.thumbnail) {
       imageUrl = `${IMAGE_BASE}/${property.thumbnail}`;
@@ -80,9 +80,7 @@ function renderProperties(properties) {
         <p class="price">₦${property.price ?? ""}</p>
         <p><strong>Location:</strong> ${escapeHtml(property.location ?? "")}</p>
         <p><strong>Status:</strong> ${escapeHtml(property.status ?? "")}</p>
-        <a href="property.html?id=${
-          property.property_id
-        }" class="btn">View Details</a>
+        <a href="property.html?id=${property.property_id}" class="btn">View Details</a>
     `;
 
     if (token) {
@@ -132,7 +130,7 @@ function renderProperties(properties) {
   });
 }
 
-// Render pagination controls
+// --- Render pagination controls ---
 function renderPagination(totalPages, activePage = 1) {
   const pagination = document.getElementById("pagination");
   pagination.innerHTML = "";
@@ -171,7 +169,7 @@ function renderPagination(totalPages, activePage = 1) {
   }
 }
 
-// Utility: escape HTML
+// --- Utility: escape HTML ---
 function escapeHtml(s = "") {
   return String(s)
     .replace(/&/g, "&amp;")
@@ -180,7 +178,7 @@ function escapeHtml(s = "") {
     .replace(/"/g, "&quot;");
 }
 
-// Filter form
+// --- Filter form ---
 document.getElementById("filterForm")?.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -199,22 +197,22 @@ document.getElementById("filterForm")?.addEventListener("submit", (e) => {
   fetchProperties(currentQuery, 1);
 });
 
-// Hero slideshow
+// --- Hero slideshow ---
 function initHeroSlideshow() {
   const slides = document.querySelectorAll(".hero-slideshow .slide");
   if (!slides.length) return;
 
   let currentIndex = 0;
-  slides[currentIndex].classList.add("active");
+  slides[currentIndex].classList.add("active"); // first slide active
 
   setInterval(() => {
     slides[currentIndex].classList.remove("active");
     currentIndex = (currentIndex + 1) % slides.length;
     slides[currentIndex].classList.add("active");
-  }, 5000);
+  }, 5000); // change every 5 seconds
 }
 
-// Init
+// --- Initialize ---
 window.addEventListener("DOMContentLoaded", () => {
   fetchProperties("", 1);
   initHeroSlideshow();

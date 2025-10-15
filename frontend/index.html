@@ -1,78 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Online Real Estate Marketplace</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="homepage.css">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="homepage.css" />
 </head>
 <body>
   <!-- Header -->
-	<header>
-	  <div class="logo">
-		<img src="logo8.png" alt="Logo" class="logo-img">
-		<span class="logo-text">Real Estate<span class="highlight">Hub</span></span>
-	  </div>
-	  <nav>
-		<ul id="nav-links">
-		
-		</ul>
-	  </nav>
-	</header>
+  <header>
+    <div class="logo">
+      <img src="logo8.png" alt="Real Estate Hub Logo" class="logo-img" />
+      <span class="logo-text">Real Estate<span class="highlight">Hub</span></span>
+    </div>
 
-  
-	<!-- Hero Section -->
-	<section class="hero">
-	  <div class="hero-slideshow">
-		<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1600&q=80');"></div>
-		<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80');"></div>
-		<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1600&q=80');"></div>
-		<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1600&q=80');"></div>
-		<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1599427303058-f04cbcf4756f?auto=format&fit=crop&w=1600&q=80');"></div>
-		<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80');"></div>
-		<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=1600&q=80');"></div>
-		<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1600&q=80');"></div>
-		<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=1600&q=80');"></div>
-		<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80');"></div>
-		<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1572120360610-d971b9d7767c?auto=format&fit=crop&w=1600&q=80');"></div>
-	  </div>
+    <div class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-	  <div class="hero-content">
-		<h1>Find Your Dream Property</h1>
-		<p>Buy, Sell, or Rent properties directly — no middlemen, just opportunities.</p>
-		<a href="#propertyList" class="hero-btn">Browse Listings</a>
-	  </div>
-	</section>
+    <nav>
+      <ul id="nav-links"></ul>
+    </nav>
+  </header>
 
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-slideshow">
+      <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1600&q=80');"></div>
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80');"></div>
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1600&q=80');"></div>
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80');"></div>
+      <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1600&q=80');"></div>
+    </div>
+
+    <div class="hero-content container">
+      <h1>Find Your Dream Property</h1>
+      <p>Buy, Sell, or Rent properties directly — no middlemen, just opportunities.</p>
+      <a href="#propertyList" class="hero-btn">Browse Listings</a>
+    </div>
+  </section>
 
   <!-- Search & Filter Section -->
   <section class="filter-section">
-    <h2>Find Your Dream Property</h2>
-    <form id="filterForm">
-      <input type="text" id="location" placeholder="Enter Location">
-      <input type="number" id="minPrice" placeholder="Min Price">
-      <input type="number" id="maxPrice" placeholder="Max Price">
-      <select id="status">
-        <option value="">Any Status</option>
-        <option value="Available">Available</option>
-        <option value="Sold">Sold</option>
-        <option value="Pending">Pending</option>
-      </select>
-      <button type="submit">Search</button>
-    </form>
+    <div class="container">
+      <h2>Find Your Dream Property</h2>
+      <form id="filterForm">
+        <input type="text" id="location" placeholder="Enter Location" />
+        <input type="number" id="minPrice" placeholder="Min Price" />
+        <input type="number" id="maxPrice" placeholder="Max Price" />
+        <select id="status">
+          <option value="">Any Status</option>
+          <option value="Available">Available</option>
+          <option value="Sold">Sold</option>
+          <option value="Pending">Pending</option>
+        </select>
+        <button type="submit">Search</button>
+      </form>
+    </div>
   </section>
 
   <!-- Property Listings -->
   <main>
-	<section class="properties">
-	  <h2>Available Properties</h2>
-	  <div id="propertyList" class="property-list"></div>
-
-	  <!-- Pagination Controls -->
-	  <div id="pagination" class="pagination"></div>
-	</section>
-
+    <section class="properties container">
+      <h2>Available Properties</h2>
+      <div id="propertyList" class="property-list"></div>
+      <div id="pagination" class="pagination"></div>
+    </section>
   </main>
 
   <!-- Footer -->

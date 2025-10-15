@@ -1,26 +1,23 @@
 function updateNav() {
   const nav = document.getElementById("nav-links");
-  if (!nav) return; // safety check
-  nav.innerHTML = ""; // clear old items
+  if (!nav) return;
+  nav.innerHTML = "";
 
   const user = JSON.parse(localStorage.getItem("user"));
 
   if (!user) {
-    // Guest
     nav.innerHTML = `
       <li><a href="index.html">Home</a></li>
       <li><a href="login.html">Login</a></li>
       <li><a href="signup.html">Register</a></li>
     `;
   } else if (user.user_type === "buyer") {
-    // Buyer
     nav.innerHTML = `
       <li><a href="index.html">Home</a></li>
       <li><a href="message.html">Messages</a></li>
       <li><a href="#" onclick="logout()">Logout</a></li>
     `;
   } else if (user.user_type === "seller") {
-    // Seller
     nav.innerHTML = `
       <li><a href="index.html">Home</a></li>
       <li><a href="message.html">Messages</a></li>
@@ -34,7 +31,6 @@ function updateNav() {
       <li><a href="#" onclick="logout()">Logout</a></li>
     `;
   } else if (user.user_type === "admin") {
-    // Admin
     nav.innerHTML = `
       <li><a href="index.html">Home</a></li>
       <li><a href="message.html">Messages</a></li>
@@ -57,42 +53,51 @@ function logout() {
 function highlightActiveLink() {
   const links = document.querySelectorAll("nav ul li a");
   let current = window.location.pathname.split("/").pop();
-
-  // Handle homepage case on Render ("/" should match "index.html")
-  if (current === "" || current === "/") {
-    current = "index.html";
-  }
+  if (current === "" || current === "/") current = "index.html";
 
   links.forEach(link => {
     const href = link.getAttribute("href");
-    if (href === current) {
-      link.classList.add("active");
-    } else {
-      link.classList.remove("active");
-    }
+    if (href === current) link.classList.add("active");
+    else link.classList.remove("active");
   });
 }
 
 function setupDropdownToggle() {
-  const dropdown = document.querySelector(".dropdown");
-  if (!dropdown) return;
+  const dropdowns = document.querySelectorAll(".dropdown");
+  dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector(".dropdown-toggle");
+    const menu = dropdown.querySelector(".dropdown-menu");
+    const arrow = dropdown.querySelector(".arrow");
 
-  const toggle = dropdown.querySelector(".dropdown-toggle");
-  const menu = dropdown.querySelector(".dropdown-menu");
-  const arrow = dropdown.querySelector(".arrow");
+    toggle.addEventListener("click", function (e) {
+      e.preventDefault();
+      menu.classList.toggle("show");
+      arrow.classList.toggle("rotate");
+    });
 
-  toggle.addEventListener("click", function (e) {
-    e.preventDefault();
-    menu.classList.toggle("show");
-    arrow.classList.toggle("rotate");
-  });
-
-  document.addEventListener("click", function (e) {
-    if (!dropdown.contains(e.target)) {
-      menu.classList.remove("show");
-      arrow.classList.remove("rotate");
-    }
+    document.addEventListener("click", function (e) {
+      if (!dropdown.contains(e.target)) {
+        menu.classList.remove("show");
+        arrow.classList.remove("rotate");
+      }
+    });
   });
 }
 
-document.addEventListener("DOMContentLoaded", updateNav);
+// Hamburger toggle
+function setupMobileMenu() {
+  const burger = document.querySelector(".menu-toggle");
+  const nav = document.querySelector("nav ul");
+
+  if (!burger || !nav) return;
+
+  burger.addEventListener("click", () => {
+    nav.classList.toggle("show-menu");
+    burger.classList.toggle("open");
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  updateNav();
+  setupMobileMenu();
+});
