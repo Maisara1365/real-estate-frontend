@@ -21,7 +21,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* changed from -1 */
+  z-index: 0;
 }
 
 .slide {
@@ -40,7 +40,7 @@
 }
 
 .hero-content {
-  position: relative; /* ensure above slides */
+  position: relative;
   z-index: 1;
   text-align: center;
   max-width: 90%;
@@ -241,11 +241,18 @@
     gap: 10px;
   }
 
+  /* ↓ Reduced size of search boxes and buttons */
   .filter-section input,
   .filter-section select,
   .filter-section button {
     width: 100%;
     max-width: 100%;
+    font-size: 0.9rem;
+    padding: 9px 12px;
+  }
+
+  .filter-section h2 {
+    font-size: 1.3rem;
   }
 }
 
@@ -263,7 +270,15 @@
     padding: 8px 16px;
   }
 
+  /* Even more compact search section on small phones */
+  .filter-section input,
+  .filter-section select,
+  .filter-section button {
+    font-size: 0.85rem;
+    padding: 7px 10px;
+  }
+
   .filter-section h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
