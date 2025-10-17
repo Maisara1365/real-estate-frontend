@@ -222,18 +222,18 @@
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
   .hero {
-    height: 60vh;
+    height: 55vh;
   }
 
   .hero-content {
     max-width: 95%;
-    padding: 20px;
+    padding: 18px;
   }
 
-  /* Shrink search form */
+  /* Ultra slim search form for mobile */
   .filter-section form {
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
   }
 
   .filter-section input,
@@ -241,43 +241,57 @@
   .filter-section button {
     width: 100%;
     max-width: 100%;
-    padding: 5px 8px; /* smaller height */
-    font-size: 0.75rem;
-    border-radius: 5px;
+    height: 22px;           /* Slim height (≈ 3 table rows) */
+    line-height: 20px;
+    font-size: 0.7rem;
+    padding: 0 6px;
+    border-radius: 4px;
   }
 
   .filter-section button {
-    padding: 6px 8px;
+    height: 24px;
+    line-height: 22px;
+    padding: 0 8px;
+    font-weight: 600;
   }
 
   .filter-section h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
   }
 }
 
 @media (max-width: 480px) {
   .hero h1 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   .hero p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .hero-btn {
-    font-size: 0.85rem;
-    padding: 8px 16px;
+    font-size: 0.8rem;
+    padding: 6px 12px;
   }
 
   .filter-section h2 {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .filter-section input,
   .filter-section select,
   .filter-section button {
-    padding: 4px 6px; /* very slim for small phones */
-    font-size: 0.7rem;
-    border-radius: 4px;
+    height: 20px;           /* Even smaller for tiny screens */
+    line-height: 18px;
+    font-size: 0.65rem;
+    padding: 0 5px;
+    border-radius: 3px;
+  }
+
+  .filter-section button {
+    height: 22px;
+    line-height: 20px;
+    padding: 0 6px;
   }
 }
