@@ -54,7 +54,7 @@ async function login(event) {
       localStorage.removeItem("redirectAfterLogin");
       window.location.href = redirectUrl;
     } else {
-      window.location.href = "index.html"; // ✅ updated here
+      window.location.href = "index.html";
     }
   } catch (err) {
     console.error(err);
@@ -71,7 +71,7 @@ async function register(event) {
   const email = document.getElementById("email")?.value.trim();
   const password = document.getElementById("password")?.value.trim();
   const confirmPassword = document.getElementById("confirmPassword")?.value.trim();
-  const user_type = document.getElementById("user_type")?.value;
+  const user_type = document.getElementById("user_type")?.value.trim();
 
   if (!first_name || !last_name || !email || !password || !user_type) {
     alert("Please fill in all fields");
@@ -83,11 +83,21 @@ async function register(event) {
     return;
   }
 
+  // ✅ Format user_type to match DB constraint (e.g., "buyer" → "Buyer")
+  const formattedType =
+    user_type.charAt(0).toUpperCase() + user_type.slice(1).toLowerCase();
+
   try {
     const res = await fetch(`${AUTH_API}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ first_name, last_name, email, password, user_type }),
+      body: JSON.stringify({
+        first_name,
+        last_name,
+        email,
+        password,
+        user_type: formattedType,
+      }),
     });
 
     const data = await res.json();
@@ -130,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.location.pathname.includes("login") ||
       window.location.pathname.includes("signup")
     ) {
-      window.location.href = "index.html"; // ✅ updated here
+      window.location.href = "index.html";
     }
   }
 });
