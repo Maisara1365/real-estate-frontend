@@ -184,11 +184,12 @@ nav ul.show-menu {
   flex-direction: column;
   background: linear-gradient(90deg, #0077b6, #0096c7);
   position: absolute;
-  top: 60px;
-  right: 30px;
+  top: 70px; /* slightly lower for better spacing */
+  right: 20px;
   width: 200px;
   padding: 15px;
   border-radius: 8px;
+  gap: 15px;
 }
 
 /* Footer */
@@ -203,34 +204,17 @@ footer {
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* --- Responsive Adjustments --- */
+/* --- Responsive --- */
 @media (max-width: 768px) {
-  /* Push nav menu a bit lower on mobile */
-  nav ul.show-menu {
-    top: 75px;
-    right: 20px;
-    width: 180px;
-    padding: 12px;
-  }
-
-  nav ul li a {
-    font-size: 0.9rem;
-    padding: 8px;
-  }
-
-  /* Slightly smaller header content */
   header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 20px;
-  }
-
-  header .logo-img {
-    width: 45px;
-    height: 45px;
+    padding: 12px 20px;
   }
 
   header .logo-text {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+  }
+
+  nav ul.show-menu {
+    top: 75px; /* lower dropdown links on small screens */
   }
 }

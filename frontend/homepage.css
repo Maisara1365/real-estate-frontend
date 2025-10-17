@@ -220,12 +220,6 @@
 }
 
 /* --- Responsive Design --- */
-@media (max-width: 1024px) {
-  .hero h1 {
-    font-size: clamp(2rem, 4vw, 2.5rem);
-  }
-}
-
 @media (max-width: 768px) {
   .hero {
     height: 60vh;
@@ -236,19 +230,19 @@
     padding: 20px;
   }
 
+  /* Shrink search form */
   .filter-section form {
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
   }
 
-  /* ↓ Reduced size of search boxes and buttons */
   .filter-section input,
   .filter-section select,
   .filter-section button {
     width: 100%;
     max-width: 100%;
+    padding: 9px 12px; /* smaller inputs */
     font-size: 0.9rem;
-    padding: 9px 12px;
   }
 
   .filter-section h2 {
@@ -258,7 +252,7 @@
 
 @media (max-width: 480px) {
   .hero h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .hero p {
@@ -266,19 +260,18 @@
   }
 
   .hero-btn {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
-
-  /* Even more compact search section on small phones */
-  .filter-section input,
-  .filter-section select,
-  .filter-section button {
     font-size: 0.85rem;
-    padding: 7px 10px;
+    padding: 8px 16px;
   }
 
   .filter-section h2 {
     font-size: 1.1rem;
+  }
+
+  .filter-section input,
+  .filter-section select,
+  .filter-section button {
+    padding: 8px 10px; /* even smaller for mobile */
+    font-size: 0.85rem;
   }
 }
