@@ -215,6 +215,6 @@ footer {
   }
 
   nav ul.show-menu {
-    top: 95px; /* lower dropdown links on small screens */
+    top: 75px; /* lower dropdown links on small screens */
   }
 }
